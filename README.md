@@ -3,9 +3,9 @@ Core code of the SCEM.
 
 ## Introduction
 
-BTM-RB main method in /Algorithms/BTM-RB/btm_vn/model/btm_wvf_Adapter.py, the training can be carried out by modifying the parameters, and the training results are generated into a txt file.</br>
+BTM-RB main method in /Algorithms/BTM-RB/model/btm_wvf_Adapter.py, the training can be carried out by modifying the parameters, and the training results are generated into a txt file.</br>
 
-Topic coherence calculation in /Algorithms/BTM-RB/btm_vn/test/topic_word_test.py.</br>
+Topic coherence calculation in /Algorithms/BTM-RB/test/topic_word_test.py.</br>
 
 The prototype system based on a browser/server structure is in /Web App. 
 The system is implemented in Java, relies on Apache Tomcat 8.5 as a web application server, and uses a MySql 5.7 database. The front-end UI is implemented by HTML5, CSS3, and JavaScript, and communicates with the server through AJAX technology. 
