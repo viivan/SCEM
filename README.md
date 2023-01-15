@@ -12,11 +12,11 @@ The system is implemented in Java, relies on Apache Tomcat 8.5 as a web applicat
 
 ## other main comparison algorithm or model implementation
 
-TF-IDF+Word2vec: cluster/cluster/tf_idf_w2v_kmeans.py</br>
-LDA: cluster/cluster/lda_gibbs.py</br>
-LDA+Word2vec: cluster/cluster/lda_expand_kmeans.py</br>
-BTM: cluster/model/btmAdapter.py</br>
-DMM：DMM implementation using [https://github.com/datquocnguyen/jLDADMM](https://github.com/datquocnguyen/jLDADMM)
+TF-IDF+Word2vec: /Algorithms/cluster/cluster/tf_idf_w2v_kmeans.py</br>
+LDA: /Algorithms/cluster/cluster/lda_gibbs.py</br>
+LDA+Word2vec: /Algorithms/cluster/cluster/lda_expand_kmeans.py</br>
+BTM: /Algorithms/cluster/model/btmAdapter.py</br>
+DMM：/Algorithms/DMM implementation using [https://github.com/datquocnguyen/jLDADMM](https://github.com/datquocnguyen/jLDADMM)
 
 
 
