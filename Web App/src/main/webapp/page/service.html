@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>自适应服务演化平台</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/css/metisMenu.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../css/hotel.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../vendor/morrisjs/css/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="dashboard.html">服务自适应动态演化平台</a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+            <!-- /.dropdown -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> 个人资料 </a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置 </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> 登出 </a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+
+        <!--左侧导航栏-->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="sidebar-search">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="搜索...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                        <!-- /input-group -->
+                    </li>
+                    <li>
+                        <a href="dashboard.html"><i class="fa fa-dashboard fa-fw"></i> 首页</a>
+                    </li>
+
+                    <li>
+                        <a href="service.html"><i class="fa fa-table fa-fw"></i> 服务列表</a>
+                    </li>
+
+                    <li>
+                        <a href="rct.html"><i class="fa fa-codepen fa-fw"></i> RCT模型</a>
+                    </li>
+
+                    <li>
+                        <a href="apis.html"><i class="fa fa-codepen fa-fw"></i> API信息</a>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">服务列表</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table id="table"></table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+            </div>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!--弹出框-->
+<div class="modal fade" id="commonModal" tabindex="-1" role="dialog" aria-labelledby="commonModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="commonModalTitle">null</h4>
+            </div>
+            <div class="modal-body" id="commonModalBody">
+                <textarea id="commonModalTextArea" class="form-control" rows="30">
+
+                </textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <!--<button type="button" class="btn btn-primary">提交更改</button>-->
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="../vendor/bootstrap/js/bootstrap.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="../vendor/metisMenu/js/metisMenu.js"></script>
+
+<!-- Morris Charts JavaScript -->
+<script src="../vendor/raphael/raphael.js"></script>
+<script src="../vendor/morrisjs/morris.js"></script>
+<script src="../data/morris-data.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../js/hotel.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
+
+<!-- Latest compiled and minified Locales -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+
+<script>
+
+    $(document).ready(function(){
+        window.operateEvents = {
+            "click #findOwl": function (e, value, row, index) {
+                $('#commonModalTitle').text(row.microServiceKey + ': owl')
+                $('#commonModalTextArea').text(value)
+            },
+            "click #findOwls": function (e, value, row, index) {
+                $('#commonModalTitle').text(row.microServiceKey + ': owls')
+                $('#commonModalTextArea').text(value)
+            }
+        }
+
+        $("#table").bootstrapTable({ // table标签的id
+            url: "/service/page.do", // 获取表格数据的url
+            method: 'get',
+            cache: false, // 设置为 false 禁用 AJAX 数据缓存， 默认为true
+            striped: true,  //表格显示条纹，默认为false
+            pagination: true, // 在表格底部显示分页组件，默认false
+            pageList: [10, 15, 20, 25, 50, 100], // 设置页面可以显示的数据条数
+            pageSize: 10, // 页面数据条数
+            pageNumber: 1, // 首页页码
+            sidePagination: 'server', // 设置为服务器端分页
+            queryParams: function (params) { // 请求服务器数据时发送的参数，可以在这里添加额外的查询参数，返回false则终止请求
+                return {
+                    pageSize: this.pageSize, // 每页要显示的数据条数
+                    pageOffset: params.offset // 页码
+                }
+            },
+            sortName: 'microServiceId', // 要排序的字段
+            sortOrder: 'desc', // 排序规则
+            columns: [
+                {
+                    field: 'microServiceId', // 返回json数据中的name
+                    title: 'ID', // 表格表头显示文字
+                    align: 'center', // 左右居中
+                    valign: 'middle',
+                }, {
+                    field: 'microServiceKey', // 返回json数据中的name
+                    title: 'Key', // 表格表头显示文字
+                    align: 'center', // 左右居中
+                    valign: 'middle',
+                }, {
+                    field: 'microServiceName',
+                    title: '服务名称',
+                    align: 'center',
+                    valign: 'middle',
+                }, {
+                    field: 'microServiceDesc',
+                    title: '服务描述',
+                    align: 'center',
+                    valign: 'middle',
+                }
+                , {
+                    field: 'microServiceHost',
+                    title: '服务地址',
+                    align: 'center',
+                    valign: 'middle',
+                }
+                , {
+                    field: 'microServiceOwlUrl',
+                    title: 'OWL文件',
+                    align: 'center',
+                    valign: 'middle',
+                    formatter: operateFormatterOwl,
+                    events: operateEvents
+                }
+                , {
+                    field: 'microServiceOwlsUrl',
+                    title: 'OWLS文件',
+                    align: 'center',
+                    valign: 'middle',
+                    formatter: operateFormatterOwls,
+                    events: operateEvents
+                }
+            ],
+            onLoadSuccess: function(response){  //加载成功时执行
+                console.info("加载成功");
+                //console.info(response);
+                //$("#table").bootstrapTable('load', response);
+            },
+            onLoadError: function(){  //加载失败时执行
+                console.info("加载数据失败");
+            }
+
+        })
+
+        function operateFormatterOwl(value, row, index) {
+            console.info(value);
+            return [
+                '<button id="findOwl" type="button" data-toggle="modal" data-target="#commonModal" class="btn btn-primary btn-xs">查看</button>',
+            ].join('');
+        }
+
+        function operateFormatterOwls(value, row, index) {
+            return [
+                '<button id="findOwls" type="button" data-toggle="modal" data-target="#commonModal" class="btn btn-primary btn-xs">查看</button>',
+            ].join('');
+        }
+
+    });
+
+</script>
+
+</body>
+
+</html>

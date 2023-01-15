@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  
+http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+http://www.springframework.org/schema/tx 
+http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+http://www.springframework.org/schema/aop 
+http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+    <!-- Druid 和 Spring 关联监控配置 start-->
+    <bean id="druid-stat-interceptor" class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor" />
+    <bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut" scope="prototype">
+        <property name="patterns">
+            <list>
+                <value>com.saltwater.module.*.service.*</value>
+            </list>
+        </property>
+    </bean>
+    <aop:config proxy-target-class="true">
+        <aop:advisor advice-ref="druid-stat-interceptor" pointcut-ref="druid-stat-pointcut" />
+    </aop:config>
+    <!-- Druid 和 Spring 关联监控配置 end-->
+    <!-- 事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" >
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+    <!-- 启用注解方式2：开启AOP事务方式 start-->
+    <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <!--REQUIRED 表示：支持当前事务，如果当前没有事务，就新建一个事务。这是最常见的选择。-->
+            <tx:method name="save*" propagation="REQUIRED"/>
+            <tx:method name="insert*" propagation="REQUIRED"/>
+            <tx:method name="add*" propagation="REQUIRED"/>
+            <tx:method name="register*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED"/>
+            <tx:method name="modify*" propagation="REQUIRED"/>
+            <tx:method name="edit*" propagation="REQUIRED"/>
+            <tx:method name="batch*"  propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED"/>
+            <tx:method name="del*" propagation="REQUIRED"/>
+            <tx:method name="deleteAndRepair" propagation="REQUIRED"/>
+            <tx:method name="remove*" propagation="REQUIRED"/>
+            <tx:method name="time*" propagation="REQUIRED"/><!--定时器方法-->
+            <tx:method name="repair" propagation="REQUIRED"/>
+            <!--以这些单词开头的方法不加入事务-->
+            <tx:method name="get*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="find*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="select*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="load*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="search*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="datagrid*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="show*" propagation="SUPPORTS" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+    
+    <aop:config>
+        <aop:pointcut id="transactionPointcut" expression="execution(* com.saltwater.module.*.service.impl.*.*(..) )"/>
+        <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice"/>
+    </aop:config>
+    <!-- 启用注解方式2：开启AOP事务方式 end-->
+</beans>

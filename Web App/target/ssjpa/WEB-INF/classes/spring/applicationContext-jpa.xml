@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  
+http://www.springframework.org/schema/beans/spring-beans-4.2.xsd 
+http://www.springframework.org/schema/data/jpa 
+http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="jpaXml"/>
+        <property name="persistenceXmlLocation" value="classpath*:META-INF/persistence.xml"></property>
+        <property name="dataSource" ref="dataSource"/>
+        <property name="jpaDialect">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>
+        </property>
+        <!-- 指定Jpa持久化实现厂商类,这里以Hibernate为例 -->
+        <property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
+        <!-- 指定Entity实体类包路径 -->
+        <property name="packagesToScan" value="com.saltwater.**.pojo"/>
+        <!-- 指定JPA属性；如Hibernate中指定是否显示SQL的是否显示、方言等 -->
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+                <!--是否显示 SQL-->
+                <prop key="hibernate.show_sql">true</prop>
+                <!--如果显示 SQL，输出的 SQL 时候要格式化-->
+                <prop key="hibernate.format_sql">true</prop>
+                <!--配置如何根据java模型生成数据库表结构,常用update,validate-->
+                <prop key="hibernate.use_sql_comments">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">validate</prop>
+                <prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.DefaultNamingStrategy</prop>
+                <!--设置最大的外链接深度，关键建议是0~3，0表示禁用-->
+                <prop key="hibernate.cache.use_second_level_cache">true</prop>
+                <!-- 开启查询缓存 -->
+                <prop key="hibernate.cache.use_query_cache">true</prop>
+                <!-- 高速缓存提供程序 -->
+                <prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+                <prop key="hibernate.cache.provider_configuration">classpath*:cache/ehcache.xml</prop>
+                <!--如果开启了二级缓存，使用该配置可以看二级缓存中存放的数据条数，查询时错过的数据条数，缓存命中率等信息-->
+                <prop key="hibernate.generate_statistics">false</prop>
+            </props>
+        </property>
+    </bean>
+    <!-- Hibernate对Jpa的实现 -->
+    <bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+    <!-- 重要配置：启用扫描并自动创建代理的功能  -->
+    <jpa:repositories base-package="com.saltwater.**.dao" transaction-manager-ref="transactionManager" entity-manager-factory-ref="entityManagerFactory"/>
+</beans>

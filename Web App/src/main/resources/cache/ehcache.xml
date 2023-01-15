@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<ehcache>
+    <defaultCache
+            maxElementsInMemory="50000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            overflowToDisk="false"
+            memoryStoreEvictionPolicy="LRU"
+    />
+    
+    
+    <!--相关参数的说明可以看这篇文章：http://seaskys.iteye.com/blog/1879462-->
+    <!--
+    maxElementsInMemory：在内存中缓存的element的最大数目。如果放入cache中的元素超过这个数值，有两种情况：
+    1、若overflowToDisk的属性值为true，会将cache中多出的元素放入磁盘文件中。
+    2、若overflowToDisk的属性值为false，会根据memoryStoreEvictionPolicy的策略替换cache中原有的元素。 
+    
+    eternal：设定缓存的elements是否永远不过期。如果为true，则缓存的数据始终有效，如果为false那么还要根据timeToIdleSeconds，timeToLiveSeconds判断。 
+    timeToIdleSeconds： 对象空闲时间，指对象在多长时间没有被访问就会失效。只对eternal为false的有效。默认值0，表示一直可以访问。以秒为单位。 
+    timeToLiveSeconds： 对象存活时间，指对象从创建到失效所需要的时间。只对eternal为false的有效。默认值0，表示一直可以访问。以秒为单位。
+    memoryStoreEvictionPolicy： 如果内存中数据超过内存限制，向磁盘缓存时的策略。默认值LRU(最近最少使用到的)，可选FIFO(先入先出)、LFU(最不经常使用法)。 
+    -->
+    
+    <cache 
+            name="pojoCache" 
+            maxElementsInMemory="10000" 
+            eternal="false" 
+            timeToIdleSeconds="60" 
+            timeToLiveSeconds="120"
+            overflowToDisk="false"
+            memoryStoreEvictionPolicy="LRU"
+    />
+
+</ehcache>

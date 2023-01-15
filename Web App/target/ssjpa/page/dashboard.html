@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>自适应服务演化平台</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/css/metisMenu.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../css/hotel.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../vendor/morrisjs/css/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="dashboard.html">服务自适应动态演化平台</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> 个人资料 </a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置 </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> 登出 </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+
+            <!--左侧导航栏-->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="搜索...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="dashboard.html"><i class="fa fa-dashboard fa-fw"></i> 首页</a>
+                        </li>
+
+                        <li>
+                            <a href="service.html"><i class="fa fa-table fa-fw"></i> 服务列表</a>
+                        </li>
+
+                        <li>
+                            <a href="rct.html"><i class="fa fa-codepen fa-fw"></i> RCT模型</a>
+                        </li>
+
+                        <li>
+                            <a href="apis.html"><i class="fa fa-codepen fa-fw"></i> API信息</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">首页</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-comments fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">19</div>
+                                    <div>用户评论</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">详情</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-tasks fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">3</div>
+                                    <div>工作任务</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">详情</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-shopping-cart fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">144</div>
+                                    <div>采购目录</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">详情</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-support fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">27</div>
+                                    <div>住户反馈</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">详情</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> 客房统计
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>日期</th>
+                                                    <th>时间</th>
+                                                    <th>房号</th>
+                                                    <th>操作</th>
+                                                    <th>收入</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>3326</td>
+                                                    <td>3/25/2018</td>
+                                                    <td>3:29 PM</td>
+                                                    <td>6601</td>
+                                                    <td>入住</td>
+                                                    <td>￥480</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3325</td>
+                                                    <td>3/25/2018</td>
+                                                    <td>3:20 PM</td>
+                                                    <td>6604</td>
+                                                    <td>入住</td>
+                                                    <td>￥480</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3324</td>
+                                                    <td>3/25/2018</td>
+                                                    <td>3:10 PM</td>
+                                                    <td>6608</td>
+                                                    <td>入住</td>
+                                                    <td>￥360</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3323</td>
+                                                    <td>3/25/2018</td>
+                                                    <td>2:10 PM</td>
+                                                    <td>6611</td>
+                                                    <td>入住</td>
+                                                    <td>￥220</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3322</td>
+                                                    <td>3/25/2018</td>
+                                                    <td>12:05 PM</td>
+                                                    <td>6612</td>
+                                                    <td>退房</td>
+                                                    <td>-</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3321</td>
+                                                    <td>3/25/2018</td>
+                                                    <td>11:50 PM</td>
+                                                    <td>6520</td>
+                                                    <td>退房</td>
+                                                    <td>-</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3320</td>
+                                                    <td>3/25/2018</td>
+                                                    <td>11:49 PM</td>
+                                                    <td>6619</td>
+                                                    <td>退房</td>
+                                                    <td>-</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3319</td>
+                                                    <td>3/25/2018</td>
+                                                    <td>11:29 PM</td>
+                                                    <td>6614</td>
+                                                    <td>入住</td>
+                                                    <td>￥480</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.table-responsive -->
+                                </div>
+                                <!-- /.col-lg-4 (nested) -->
+                                <div class="col-lg-8">
+                                    <div id="morris-bar-chart"></div>
+                                </div>
+                                <!-- /.col-lg-8 (nested) -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-8 -->
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> 通知
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-comment fa-fw"></i> 新的用户评论
+                                    <span class="pull-right text-muted small"><em>4 分钟前</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-twitter fa-fw"></i> 新的工作任务
+                                    <span class="pull-right text-muted small"><em>12 分钟前</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-envelope fa-fw"></i> 新增采购项
+                                    <span class="pull-right text-muted small"><em>27 分钟前</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-tasks fa-fw"></i> 新的住户反馈
+                                    <span class="pull-right text-muted small"><em>43 分钟前</em>
+                                    </span>
+                                </a>
+                            </div>
+                            <!-- /.list-group -->
+                            <a href="#" class="btn btn-default btn-block">查看所有通知</a>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+
+                </div>
+                <!-- /.col-lg-4 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/js/metisMenu.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="../vendor/raphael/raphael.js"></script>
+    <script src="../vendor/morrisjs/morris.js"></script>
+    <script src="../data/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../js/hotel.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
+
+    <!-- Latest compiled and minified Locales -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+
+</body>
+
+</html>
