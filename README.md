@@ -17,8 +17,5 @@ LDA: /Algorithms/cluster/lda_gibbs.py</br>
 LDA+Word2vec: /Algorithms/cluster/lda_expand_kmeans.py</br>
 BTM: /Algorithms/cluster/model/btmAdapter.py</br>
 DMM：implementation using [https://github.com/datquocnguyen/jLDADMM](https://github.com/datquocnguyen/jLDADMM)
-
-
-
 <br><br><hr>
 Thanks to ZhengJiahong, LuChengbing, DaiJiawei, WuHan, LiDuanni for his research contribution of this project.
